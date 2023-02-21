@@ -1,0 +1,31 @@
+.navbar {
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em 2em;
+}
+.brand {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+.brand span {
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.links_list {
+    display: flex;
+    list-style: none;
+}
+.links_list li {
+    margin-left: 1em;
+}
+.links_list li a {
+    padding: .4em .6em;
+}
+.active {
+    background-color: #000;
+    color: #fff;
+  }
