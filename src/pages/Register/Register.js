@@ -4,13 +4,16 @@ import styles from './Register.module.css'
 
 import { useState, useEffect } from 'react'
 
+import { useAuthentication } from '../../hooks/useAuthentication'
+
 const Register = () => {
     const [displayName, setDisplayName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
+
+    const {createUser, error: authError, loading } = useAuthentication();
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -25,8 +28,18 @@ const Register = () => {
             setError('Senhas não conferem')
             return
         }
+
+        const res = await createUser(user)
         console.log(user)
     }
+
+    //Mapear os erros do firebase
+    useEffect(() => {
+        if (authError) {
+            setError(authError)
+        }
+    }, [authError])
+
 
     return (
         <div className={styles.register}>
