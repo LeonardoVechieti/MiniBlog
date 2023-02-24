@@ -1,0 +1,27 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.home h1 {
+    margin-bottom: 1em;
+}
+.search_form {
+    max-width: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.search_form input {
+    margin-right: 10px;
+    width: 50%;
+}
+.no_results p{
+    margin-bottom: 2em;
+}
+.no_results a{
+    padding: 10px 25px;
+}
