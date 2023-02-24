@@ -17,26 +17,50 @@ const CreatePost = () => {
     const { user } = useAuthValue()
 
     const {insertDocument, response} = useInsertDocument("posts")
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setFormError('')
         //validar image url
+        try {
+            new URL(image)
+        }
+        catch (error) {
+            setFormError('URL da imagem inválida')
+            return
+        }
+        //validar tags
+        // if (tags.length < 3) {
+        //     setFormError('Insira pelo menos 3 tags')
+        //     return
+        // }
+        //separar tags
+        const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
+        
         //cria arrays de tags
         //checar todos os valores
+        //se algum valor for vazio, retorna erro
+        //se não, cria o post
+        if (!title || !image || !body || !tagsArray) {
+            setFormError('Preencha todos os campos')
+            return
+        }
         // console.log(title, image, body, tags)
 
         insertDocument({
             title,
             image,
             body,
-            tags,
+            tagsArray,
             uid: user.uid,
             createdBy: user.displayName,
             //createdAt: new Date().toISOString(),
-            //
+            
         })
-
+        if (!response.error) {
+            navigate('/dashboard')
+        }
     }
 
   return (
@@ -91,9 +115,13 @@ const CreatePost = () => {
                     onChange={(e) => setTags(e.target.value)}
                 />
             </label>
-            <button className='btn' type='submit' >Criar Post</button>
+            {!response.loading && <button className='btn' type='submit' >Criar Post</button>}
+            {response.loading && <button className='btn' type='submit' disabled >Criando Post...</button>}
+            
             {response.error && <p className='error'>{response.error}</p>}
+            {formError && <p className='error'>{formError}</p>}
         </form>
+           
 
     </div>
   )
