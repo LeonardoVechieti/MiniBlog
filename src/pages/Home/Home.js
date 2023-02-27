@@ -16,7 +16,10 @@ const Home = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/search/${query}`)
+    // navigate(`/search/${query}`)
+    if (query) {
+      navigate(`/search?q=${query}`)
+    }
   }
 
   return (
