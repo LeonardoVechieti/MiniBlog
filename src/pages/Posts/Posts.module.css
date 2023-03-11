@@ -11,6 +11,9 @@
     justify-content: center;
     
   }
+  .post_container img {
+    max-width: 900px;
+  }
   
   .tags p {
     margin-right: 1em;

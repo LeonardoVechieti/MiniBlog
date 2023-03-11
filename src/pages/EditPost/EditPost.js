@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuthValue } from '../../context/AuthContext'
 import { useFetchDocument } from "../../hooks/useFetchDocument";
-import { useInsertDocument } from '../../hooks/useInsertDocument'
+import { useUpdateDocument } from '../../hooks/use UpdateDocument'
 
 const EditPost = () => {
     const { id } = useParams();
@@ -35,7 +35,7 @@ const EditPost = () => {
 
     const { user } = useAuthValue()
 
-    const { insertDocument, response } = useInsertDocument("posts")
+    const { updateDocument, response } = useUpdateDocument("posts");
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -57,29 +57,28 @@ const EditPost = () => {
         //separar tags
         const tagsArray = tags.split(',').map(tag => tag.trim().toLowerCase())
 
-        //cria arrays de tags
-        //checar todos os valores
-        //se algum valor for vazio, retorna erro
-        //se não, cria o post
-        if (!title || !image || !body || !tagsArray) {
-            setFormError('Preencha todos os campos')
-            return
-        }
-        // console.log(title, image, body, tags)
+        console.log(tagsArray);
 
-        insertDocument({
+        console.log({
             title,
             image,
             body,
-            tagsArray,
-            uid: user.uid,
-            createdBy: user.displayName,
-            //createdAt: new Date().toISOString(),
+            tags: tagsArray,
+        });
 
-        })
-        if (!response.error) {
-            navigate('/home')
-        }
+        const data = {
+            title,
+            image,
+            body,
+            tags: tagsArray,
+        };
+
+        console.log(post);
+
+        updateDocument(id, data);
+
+        // redirect to home page
+        navigate("/dashboard");
     }
 
     return (
