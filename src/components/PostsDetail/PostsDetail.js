@@ -18,7 +18,7 @@ const PostsDetail = ({post}) => {
                 </Link>
             ))}
         </div>
-        <Link to={`/post/${post.id}`} className="btn outline">Ver Post</Link>
+        <Link to={`/posts/${post.id}`} className="btn outline">Ver Post</Link>
     </div>
   )
 }

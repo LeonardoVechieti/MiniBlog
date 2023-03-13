@@ -56,43 +56,54 @@ textarea {
   background-color: transparent;
 }
 .btn {
-  background-color: rgb(0, 0, 0);
-  color: white;
   text-align: center;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: 10px;
   width: 120px;
+  font-weight: bold;
   border: none;
   padding: 10px 15px;
-  font-size: 1.2em;
-  font-family: "Montserrat", sans-serif;
-}
-.btn:hover {
-  background-color: #000;
-  color: #fff;
-  font-style: bold;
-}
-.btn:focus {
-  outline: none;
+  font-size: 1em;
   background-color: transparent;
+  border-radius: 0;
   color: #000;
-  border: #000 1px solid;
+  border: 1px solid #000;
 }
+
+.btn.btn-dark {
+  background-color: #000;
+  border-radius: 0;
+}
+
+.btn.btn-outline {
+  background-color: transparent;
+  border-radius: 0;
+  color: #000;
+  border: 1px solid #000;
+  padding: 7px 30px;
+}
+
+.btn:hover {
+  /* background-color: #0f730c; */
+  /* color: #fff; */
+}
+
+.btn.btn-outline:hover {
+  /* background-color: #000; */
+}
+
 .btn.btn-danger:hover {
-  background-color: #f00;
-  color: #fff;
+  background-color: #dc3545;
 }
 
 button[disabled] {
-  background-color: #ccc;
-  color: #aaa;
+  background-color: #aaa;
 }
 
-.container .error{
-  color: rgb(255, 253, 253);
-  font-size: .8em;
-  background-color: rgb(204, 26, 26);
-  padding: .5em;
-  border-radius: 10px;
-  margin: 1em 0;
+.container .error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 5px;
+  border-radius: 5px;
 }

@@ -59,7 +59,7 @@ const CreatePost = () => {
             
         })
         if (!response.error) {
-            navigate('/dashboard')
+            navigate('/home')
         }
     }
 
