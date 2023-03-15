@@ -1,3 +1,5 @@
+#Project of a blog built using react and firebase developed for studies. On the blog we can authenticate ourselves, post content and images.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
